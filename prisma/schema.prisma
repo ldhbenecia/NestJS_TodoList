@@ -14,7 +14,7 @@ datasource db {
 // 만들려는 모델
 model Todo {
   id    Int     @default(autoincrement()) @id
-  title String  @unique
-  content  String?
+  title String? @default("")
+  content  String
   is_done Boolean? @default(false)
 }
