@@ -1,4 +1,4 @@
-import { Controller, Get, Delete, Post, Param, Body, Put } from '@nestjs/common';
+import { Controller, Get, Delete, Post, Param, Body, Put, Patch } from '@nestjs/common';
 import { TodoService } from '../service/todo.service';
 import { Todo } from '@prisma/client';
 
@@ -29,5 +29,10 @@ export class TodoController {
   @Put(':id')
   async updateTodoItem(@Param('id') id: number, @Body() data: Todo): Promise<Todo | null> {
     return this.todoService.updateTodoItem(id, data.title, data.content, data.is_done);
+  }
+
+  @Patch(':id')
+  async clearTodoItem(@Param('id') id: number, @Body() data: Todo): Promise<Todo | null> {
+    return this.todoService.clearTodoItem(id, data.is_done);
   }
 }

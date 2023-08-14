@@ -41,4 +41,14 @@ export class TodoService {
       },
     });
   }
+
+  // 수행 여부
+  async clearTodoItem(id: number, is_done: boolean): Promise<Todo | null> {
+    return this.prismaService.todo.update({
+      where: { id: Number(id) },
+      data: {
+        is_done: !is_done,
+      },
+    });
+  }
 }
