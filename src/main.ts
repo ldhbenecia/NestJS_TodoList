@@ -5,6 +5,7 @@ import { TodoModule } from './todo/todo.module';
 
 async function bootstrap() {
   const app = await NestFactory.create(TodoModule);
+  app.enableCors();
 
   const config = new DocumentBuilder()
     .setTitle('Ldh API')
